@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub Admin</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo logo-link">
+    <i class="fa-solid fa-shield-heart"></i>
+    Rescue<span>Hub</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+  <nav class="nav-menu">
+    <a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+    <a href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+    <a href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+    <a href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+    <a href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+    <a class="active" href="admin.html"><i class="fa fa-user"></i> Admin</a>
+  </nav>
+  <div class="nav-actions">
+    <button type="button" class="icon-button notification-btn" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+    <div class="profile">
+      <button type="button" class="profile-toggle" aria-label="Open profile">
+        <span class="profile-avatar" id="profileAvatar">RH</span>
+        <span class="profile-copy"><strong id="profileName">Rescue User</strong><span id="profileRole">Delhi Response Zone</span></span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-shell">
+  <section class="page-title">
+    <div class="header-icon"><i class="fa fa-user"></i></div>
+    <div>
+      <h1>Admin Panel</h1>
+      <p>Monitor users, reports, and simulated response activity.</p>
+    </div>
+  </section>
+
+  <div class="tabs">
+    <button class="active">Users <span id="adminUsersCount">0</span></button>
+    <button>Reports <span id="adminReportsCount">0</span></button>
+    <button>SOS Requests <span id="adminSosCount">0</span></button>
+    <button>Send Alert</button>
+  </div>
+
+  <div id="adminAccessMessage" class="error-state state-box" hidden>
+    <p>Admin access is required to view this section.</p>
+  </div>
+
+  <section class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody id="adminUserTable">
+        <tr><td colspan="4">Loading admin data...</td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

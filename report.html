@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub Report</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo logo-link">
+    <i class="fa-solid fa-shield-heart"></i>
+    Rescue<span>Hub</span>
+  </a>
+
+  <button type="button" class="nav-toggle" aria-label="Open navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="nav-menu">
+    <a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+    <a href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+    <a class="active" href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+    <a href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+    <a href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+    <a href="admin.html"><i class="fa fa-user"></i> Admin</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button type="button" class="icon-button notification-btn" aria-label="Notifications">
+      <i class="fa-regular fa-bell"></i>
+    </button>
+
+    <div class="profile">
+      <button type="button" class="profile-toggle" aria-label="Open profile">
+        <span class="profile-avatar" id="profileAvatar">RH</span>
+        <span class="profile-copy">
+          <strong id="profileName">Rescue User</strong>
+          <span id="profileRole">Delhi Response Zone</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-shell">
+  <section class="page-title">
+    <div class="icon-box">
+      <i class="fa-regular fa-file-lines"></i>
+    </div>
+    <div>
+      <h1>Report a Disaster</h1>
+      <p>Submit a field report and save it into the live alert feed.</p>
+    </div>
+  </section>
+
+  <section class="report-layout">
+    <div class="report-card">
+      <form id="reportForm" class="report-form">
+        <label for="reportType">Disaster Type</label>
+        <select id="reportType" class="select" required>
+          <option value="">Select type...</option>
+          <option>Flood</option>
+          <option>Earthquake</option>
+          <option>Fire</option>
+          <option>Cyclone</option>
+          <option>Landslide</option>
+        </select>
+
+        <label for="reportSeverity">Severity</label>
+        <select id="reportSeverity" class="select" required>
+          <option value="">Select severity...</option>
+          <option value="critical">Critical</option>
+          <option value="high">High</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+        </select>
+
+        <label for="reportLocation">Location</label>
+        <input id="reportLocation" class="input" type="text" placeholder="e.g., Mumbai, Maharashtra" required>
+
+        <label for="reportDescription">Description</label>
+        <textarea id="reportDescription" class="textarea" placeholder="Describe the disaster situation..." required></textarea>
+
+        <button id="reportSubmit" type="submit" class="btn btn-primary">Submit Report</button>
+      </form>
+    </div>
+
+    <aside class="summary-panel">
+      <div class="section-head">
+        <div>
+          <h2>Report Impact</h2>
+          <p>Submitted reports create new incidents and activity entries in the backend.</p>
+        </div>
+      </div>
+      <div class="timeline-list">
+        <div class="timeline-item">
+          <span class="timeline-time">1. Alert Feed</span>
+          <p>Your report appears in the live alerts list with severity and location.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">2. Dashboard</span>
+          <p>The dashboard updates the metrics, notes, and recent activity timeline.</p>
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-time">3. Response Flow</span>
+          <p>Emergency teams can use the report to route people toward shelters and hospitals.</p>
+        </div>
+      </div>
+    </aside>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

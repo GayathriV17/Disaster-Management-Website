@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub SOS</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="sos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo logo-link">
+    <i class="fa-solid fa-shield-heart"></i>
+    Rescue<span>Hub</span>
+  </a>
+
+  <button type="button" class="nav-toggle" aria-label="Open navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="nav-menu">
+    <a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+    <a class="active" href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+    <a href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+    <a href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+    <a href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+    <a href="admin.html"><i class="fa fa-user"></i> Admin</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button type="button" class="icon-button notification-btn" aria-label="Notifications">
+      <i class="fa-regular fa-bell"></i>
+    </button>
+
+    <div class="profile">
+      <button type="button" class="profile-toggle" aria-label="Open profile">
+        <span class="profile-avatar" id="profileAvatar">RH</span>
+        <span class="profile-copy">
+          <strong id="profileName">Rescue User</strong>
+          <span id="profileRole">Delhi Response Zone</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="sos-page">
+  <section class="sos-hero">
+    <div class="sos-card">
+      <div class="warning-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+
+      <h1>SOS Emergency</h1>
+      <p>
+        Send an emergency distress signal with your current location and trigger a
+        simulated emergency message to your saved contacts.
+      </p>
+
+      <button id="sosTrigger" class="sos-btn" type="button">
+        SOS
+      </button>
+
+      <div id="sosLoading" class="loading-state state-box" hidden>
+        <div class="spinner"></div>
+        <p>Sending emergency signal...</p>
+      </div>
+
+      <p id="locationInfo" class="location-text"></p>
+    </div>
+
+    <div class="service-panel">
+      <div class="service-panel-head">
+        <h2>Emergency Services</h2>
+        <p>Quick-call contacts for urgent situations.</p>
+      </div>
+
+      <div class="service-grid">
+        <a class="service-card" href="tel:101"><i class="fa-solid fa-fire-extinguisher"></i><div><h3>Fire</h3><p>101</p></div></a>
+        <a class="service-card" href="tel:100"><i class="fa-solid fa-shield-halved"></i><div><h3>Police</h3><p>100</p></div></a>
+        <a class="service-card" href="tel:102"><i class="fa-solid fa-truck-medical"></i><div><h3>Ambulance</h3><p>102</p></div></a>
+        <a class="service-card" href="tel:108"><i class="fa-solid fa-hospital"></i><div><h3>Hospitals</h3><p>108</p></div></a>
+        <a class="service-card" href="tel:112"><i class="fa-solid fa-phone-volume"></i><div><h3>National Emergency</h3><p>112</p></div></a>
+        <a class="service-card" href="tel:1098"><i class="fa-solid fa-people-roof"></i><div><h3>Other Help</h3><p>1098</p></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-sheet">
+    <div class="sheet-head">
+      <div>
+        <h2>Personal Emergency Contacts</h2>
+        <p>Add 5 people you may need during an emergency. These are saved to your account on this local server.</p>
+      </div>
+      <button id="saveContactsButton" type="button" class="btn btn-primary">Save Contacts</button>
+    </div>
+
+    <div class="contact-list">
+      <div class="contact-card"><div class="contact-card-head"><h3>Contact 1</h3><span>Primary</span></div><label for="contactName1">Name</label><input id="contactName1" class="emergency-contact-input input" data-contact-field="name" data-contact-index="0" type="text" placeholder="Enter contact name"><label for="contactPhone1">Phone</label><input id="contactPhone1" class="emergency-contact-input input" data-contact-field="phone" data-contact-index="0" type="tel" placeholder="Enter phone number"></div>
+      <div class="contact-card"><div class="contact-card-head"><h3>Contact 2</h3><span>Family</span></div><label for="contactName2">Name</label><input id="contactName2" class="emergency-contact-input input" data-contact-field="name" data-contact-index="1" type="text" placeholder="Enter contact name"><label for="contactPhone2">Phone</label><input id="contactPhone2" class="emergency-contact-input input" data-contact-field="phone" data-contact-index="1" type="tel" placeholder="Enter phone number"></div>
+      <div class="contact-card"><div class="contact-card-head"><h3>Contact 3</h3><span>Friend</span></div><label for="contactName3">Name</label><input id="contactName3" class="emergency-contact-input input" data-contact-field="name" data-contact-index="2" type="text" placeholder="Enter contact name"><label for="contactPhone3">Phone</label><input id="contactPhone3" class="emergency-contact-input input" data-contact-field="phone" data-contact-index="2" type="tel" placeholder="Enter phone number"></div>
+      <div class="contact-card"><div class="contact-card-head"><h3>Contact 4</h3><span>Neighbor</span></div><label for="contactName4">Name</label><input id="contactName4" class="emergency-contact-input input" data-contact-field="name" data-contact-index="3" type="text" placeholder="Enter contact name"><label for="contactPhone4">Phone</label><input id="contactPhone4" class="emergency-contact-input input" data-contact-field="phone" data-contact-index="3" type="tel" placeholder="Enter phone number"></div>
+      <div class="contact-card"><div class="contact-card-head"><h3>Contact 5</h3><span>Other</span></div><label for="contactName5">Name</label><input id="contactName5" class="emergency-contact-input input" data-contact-field="name" data-contact-index="4" type="text" placeholder="Enter contact name"><label for="contactPhone5">Phone</label><input id="contactPhone5" class="emergency-contact-input input" data-contact-field="phone" data-contact-index="4" type="tel" placeholder="Enter phone number"></div>
+    </div>
+
+    <p id="contactSaveMessage" class="contact-save-message"></p>
+  </section>
+
+  <section class="contact-sheet">
+    <div class="sheet-head">
+      <div>
+        <h2>Alert Delivery</h2>
+        <p>When SOS is triggered, RescueHub creates a live SOS record and generates messages to your saved contacts.</p>
+      </div>
+    </div>
+    <div id="sosMessages" class="message-list">
+      <div class="message-card">
+        <span class="timeline-time">Waiting</span>
+        <p>Trigger SOS to send simulated emergency messages to your saved contacts.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

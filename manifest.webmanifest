@@ -1,0 +1,9 @@
+{
+  "name": "RescueHub",
+  "short_name": "RescueHub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09111f",
+  "theme_color": "#ff4d4d",
+  "description": "Emergency response support app with alerts, shelters, SOS, and reporting."
+}

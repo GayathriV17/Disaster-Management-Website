@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub Safety Guide</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo logo-link">
+    <i class="fa-solid fa-shield-heart"></i>
+    Rescue<span>Hub</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+  <nav class="nav-menu">
+    <a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+    <a href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+    <a href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+    <a href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+    <a class="active" href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+    <a href="admin.html"><i class="fa fa-user"></i> Admin</a>
+  </nav>
+  <div class="nav-actions">
+    <button type="button" class="icon-button notification-btn" aria-label="Notifications"><i class="fa-regular fa-bell"></i></button>
+    <div class="profile">
+      <button type="button" class="profile-toggle" aria-label="Open profile">
+        <span class="profile-avatar" id="profileAvatar">RH</span>
+        <span class="profile-copy"><strong id="profileName">Rescue User</strong><span id="profileRole">Delhi Response Zone</span></span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="page-shell">
+  <section class="page-title">
+    <div class="header-icon"><i class="fa-solid fa-book-open"></i></div>
+    <div>
+      <h1>Safety Guide</h1>
+      <p>Essential guidance for floods, earthquakes, cyclones, and fires.</p>
+    </div>
+  </section>
+
+  <section class="safety-grid">
+    <article class="safety-card"><div class="card-title"><i class="fa-solid fa-water"></i><h3>Floods</h3></div><ul><li>Move to higher ground immediately when warnings are issued.</li><li>Never walk, swim, or drive through flood water.</li><li>Stay off bridges over fast-moving water.</li><li>Disconnect electrical appliances if safe to do so.</li><li>Store drinking water in clean containers.</li><li>Keep important documents in waterproof bags.</li></ul></article>
+    <article class="safety-card"><div class="card-title"><i class="fa-solid fa-mountain"></i><h3>Earthquakes</h3></div><ul><li>Drop to the ground, take cover, and hold on.</li><li>Stay away from windows and exterior walls.</li><li>If outdoors, move to a clear area.</li><li>If driving, pull over and stop safely.</li><li>Check for injuries and damage after shaking stops.</li><li>Be prepared for aftershocks.</li></ul></article>
+    <article class="safety-card"><div class="card-title"><i class="fa-solid fa-wind"></i><h3>Cyclones</h3></div><ul><li>Secure outdoor objects and board up windows.</li><li>Stay indoors in an interior room away from windows.</li><li>Stock water, food, batteries, and first aid supplies.</li><li>Follow official evacuation orders.</li><li>Do not go outside during the eye of the storm.</li><li>Avoid damaged buildings and power lines afterward.</li></ul></article>
+    <article class="safety-card"><div class="card-title"><i class="fa-solid fa-fire"></i><h3>Fires</h3></div><ul><li>Evacuate immediately when ordered by authorities.</li><li>Close windows, vents, and doors to limit fire spread.</li><li>Crawl low under smoke to breathe cleaner air.</li><li>Never re-enter a burning building.</li><li>Keep a cloth over your nose and mouth if needed.</li><li>Practice an emergency evacuation plan in advance.</li></ul></article>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

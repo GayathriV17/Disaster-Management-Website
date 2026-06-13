@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub Shelters</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="navbar">
+  <a href="index.html" class="logo logo-link">
+    <i class="fa-solid fa-shield-heart"></i>
+    Rescue<span>Hub</span>
+  </a>
+
+  <button type="button" class="nav-toggle" aria-label="Open navigation">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="nav-menu">
+    <a href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+    <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+    <a href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+    <a href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+    <a class="active" href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+    <a href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+    <a href="admin.html"><i class="fa fa-user"></i> Admin</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button type="button" class="icon-button notification-btn" aria-label="Notifications">
+      <i class="fa-regular fa-bell"></i>
+    </button>
+
+    <div class="profile">
+      <button type="button" class="profile-toggle" aria-label="Open profile">
+        <span class="profile-avatar" id="profileAvatar">RH</span>
+        <span class="profile-copy">
+          <strong id="profileName">Rescue User</strong>
+          <span id="profileRole">Delhi Response Zone</span>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="shelter-page">
+  <section class="shelter-hero">
+    <div class="shelter-hero-copy">
+      <p class="section-kicker">Safe Zone Network</p>
+      <h1>Find the closest shelter, hospital, or relief point fast.</h1>
+      <p class="subtitle">
+        Use the live map and shelter directory to move people toward protected zones,
+        medical support, and emergency supplies during active incidents.
+      </p>
+
+      <div class="shelter-hero-tags">
+        <button type="button" class="chip hero-info-chip active" data-info="family">
+          <i class="fa-solid fa-house-circle-check"></i> Family shelters
+        </button>
+        <button type="button" class="chip hero-info-chip" data-info="medical">
+          <i class="fa-solid fa-truck-medical"></i> Medical support
+        </button>
+        <button type="button" class="chip hero-info-chip" data-info="readiness">
+          <i class="fa-solid fa-clock"></i> 24/7 response ready
+        </button>
+      </div>
+
+      <div class="hero-info-box">
+        <h3 id="heroInfoTitle">Family shelters</h3>
+        <p id="heroInfoText">
+          Safe zones prepared for families, children, and elderly evacuees with food,
+          water, rest areas, and overnight shelter support.
+        </p>
+      </div>
+    </div>
+
+    <div class="shelter-summary-card">
+      <h2>Zone Status</h2>
+      <div class="summary-metric">
+        <strong id="shelterCountMetric">0</strong>
+        <span id="shelterCountText">safe locations currently listed in the response zone</span>
+      </div>
+      <div class="summary-list">
+        <div>
+          <span class="summary-label">Nearest shelter</span>
+          <p id="nearestShelterText">Waiting for route calculation.</p>
+        </div>
+        <div>
+          <span class="summary-label">Medical standby</span>
+          <p id="medicalStandbyText">Waiting for selected zone.</p>
+        </div>
+        <div>
+          <span class="summary-label">Recommended action</span>
+          <p id="recommendedActionText">Use filters and select a shelter to view route guidance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="shelter-layout-grid">
+    <div class="shelter-map-panel">
+      <div class="section-head">
+        <div>
+          <h2>Interactive Shelter Map</h2>
+          <p>Track support locations across the active response area.</p>
+        </div>
+        <div class="map-tools">
+          <label for="zoneSelector" class="zone-label">Response zone</label>
+          <select id="zoneSelector" class="input zone-selector">
+            <option value="delhi">Delhi Response Zone</option>
+            <option value="mumbai">Mumbai Coastal Zone</option>
+            <option value="chennai">Chennai Flood Zone</option>
+            <option value="bengaluru">Bengaluru Support Zone</option>
+          </select>
+          <div class="chip-row">
+            <button type="button" class="chip shelter-filter active" data-filter="all">All</button>
+            <button type="button" class="chip shelter-filter" data-filter="shelter">Shelters</button>
+            <button type="button" class="chip shelter-filter" data-filter="hospital">Hospitals</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-group">
+          <input id="shelterSearch" class="input" type="search" placeholder="Search shelter or area">
+        </div>
+        <div class="toolbar-group">
+          <button id="locateUserButton" type="button" class="btn btn-secondary">Use My Location</button>
+        </div>
+      </div>
+
+      <div class="map-box">
+        <div id="shelterMap" class="shelter-map" aria-label="Interactive shelter map"></div>
+        <div class="map-overlay">
+          <span id="shelterBadge"><i class="fa-solid fa-building"></i> 0 Shelters</span>
+          <span id="hospitalBadge"><i class="fa-solid fa-plus"></i> 0 Hospitals</span>
+          <span id="zoneBadge"><i class="fa-solid fa-location-crosshairs"></i> Delhi Response Zone</span>
+        </div>
+      </div>
+
+      <div id="shelterLoading" class="loading-state state-box">
+        <div class="spinner"></div>
+        <p>Loading shelter network...</p>
+      </div>
+
+      <div id="shelterError" class="error-state state-box" hidden>
+        <p>Unable to load shelter data right now.</p>
+      </div>
+    </div>
+
+    <aside class="shelter-side-panel">
+      <div class="quick-panel">
+        <h3>Rapid Routing</h3>
+        <div class="route-step">
+          <i class="fa-solid fa-person-shelter"></i>
+          <div>
+            <h4>Families and evacuees</h4>
+            <p>Move to shelters with food, water, and overnight support.</p>
+          </div>
+        </div>
+        <div class="route-step">
+          <i class="fa-solid fa-suitcase-medical"></i>
+          <div>
+            <h4>Serious injuries</h4>
+            <p>Direct to hospitals with trauma and ambulance intake.</p>
+          </div>
+        </div>
+        <div class="route-step">
+          <i class="fa-solid fa-bullhorn"></i>
+          <div>
+            <h4>Field updates</h4>
+            <p>Report overcrowding or shortages so teams can rebalance routes.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-panel info-panel">
+        <h3 id="infoTitle">Selected Location</h3>
+        <p id="infoType" class="info-type">Choose a shelter card to view details.</p>
+        <div class="info-list">
+          <p id="infoArea">Area: Waiting for selection</p>
+          <p id="infoSupport">Support: Waiting for selection</p>
+          <p id="infoStatus">Status: Waiting for selection</p>
+        </div>
+      </div>
+
+      <div class="route-panel">
+        <div class="section-head">
+          <div>
+            <h2>Route Directions</h2>
+            <p>Directions update when you use your current location and select a shelter.</p>
+          </div>
+        </div>
+        <div id="routeOutput" class="timeline-list">
+          <div class="timeline-item">
+            <span class="timeline-time">Awaiting Route</span>
+            <p>Select a shelter card and click `Use My Location` to generate guidance.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <section class="directory-section">
+    <div class="section-head">
+      <div>
+        <h2>Shelter Directory</h2>
+        <p>Priority destinations for civilians and emergency teams.</p>
+      </div>
+    </div>
+
+    <div id="shelterEmpty" class="empty-state state-box" hidden>
+      <p>No shelter locations match the current filter.</p>
+    </div>
+
+    <div id="shelterDirectory" class="shelter-directory" hidden></div>
+  </section>
+</main>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

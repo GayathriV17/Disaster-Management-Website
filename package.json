@@ -1,0 +1,9 @@
+{
+  "name": "rescuehub-working-model",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RescueHub local working model with a plain Node backend",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ff4d4d">
+<link rel="manifest" href="manifest.webmanifest">
+<title>RescueHub Dashboard</title>
+<link rel="stylesheet" href="shared.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<main id="authShell" class="auth-shell">
+  <section class="auth-hero">
+    <div class="hero-copy">
+      <p class="section-kicker">Emergency Response Platform</p>
+      <h1 id="heroTitle">Login to access RescueHub.</h1>
+      <p id="heroText" class="auth-lead">
+        Enter your email and password to open the emergency dashboard and continue
+        with your response tools.
+      </p>
+    </div>
+
+    <section class="auth-panel">
+      <div class="auth-panel-head">
+        <div class="logo">
+          <i class="fa-solid fa-shield-heart"></i>
+          Rescue<span>Hub</span>
+        </div>
+        <h2 id="authTitle">Login</h2>
+        <p id="authSubtitle">Sign in with your existing account to continue.</p>
+      </div>
+
+      <div class="auth-toggle">
+        <button id="loginToggle" type="button" class="active">Login</button>
+        <button id="signupToggle" type="button">Sign Up</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <label for="loginEmail">Email address</label>
+        <input id="loginEmail" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
+
+        <label for="loginPassword">Password</label>
+        <div class="password-field">
+          <input id="loginPassword" type="password" placeholder="Enter your password" required>
+          <button type="button" class="password-toggle" data-target="loginPassword" aria-label="Show password">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button id="loginSubmit" type="submit" class="btn btn-primary auth-submit">Login to Dashboard</button>
+        <p id="loginMessage" class="auth-message"></p>
+      </form>
+
+      <form id="signupForm" class="auth-form" hidden>
+        <label for="signupName">Full name</label>
+        <input id="signupName" type="text" placeholder="Enter your name" required>
+
+        <label for="signupEmail">Email address</label>
+        <input id="signupEmail" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
+
+        <label for="signupPassword">Password</label>
+        <div class="password-field">
+          <input id="signupPassword" type="password" placeholder="Minimum 6 characters" required>
+          <button type="button" class="password-toggle" data-target="signupPassword" aria-label="Show password">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <label for="confirmPassword">Confirm password</label>
+        <div class="password-field">
+          <input id="confirmPassword" type="password" placeholder="Re-enter password" required>
+          <button type="button" class="password-toggle" data-target="confirmPassword" aria-label="Show password">
+            <i class="fa-regular fa-eye"></i>
+          </button>
+        </div>
+
+        <button id="signupSubmit" type="submit" class="btn btn-primary auth-submit">Create Account</button>
+        <p id="signupMessage" class="auth-message"></p>
+      </form>
+    </section>
+  </section>
+</main>
+
+<div id="appShell" hidden>
+  <header class="navbar">
+    <a href="index.html" class="logo logo-link">
+      <i class="fa-solid fa-shield-heart"></i>
+      Rescue<span>Hub</span>
+    </a>
+
+    <button type="button" class="nav-toggle" aria-label="Open navigation">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav class="nav-menu">
+      <a class="active" href="index.html"><i class="fa fa-home"></i> Dashboard</a>
+      <a href="alerts.html"><i class="fa fa-bell"></i> Alerts</a>
+      <a href="sos.html"><i class="fa fa-triangle-exclamation"></i> SOS</a>
+      <a href="report.html"><i class="fa fa-file-lines"></i> Report</a>
+      <a href="shelters.html"><i class="fa fa-location-dot"></i> Shelters</a>
+      <a href="safety.html"><i class="fa fa-book"></i> Safety Guide</a>
+      <a href="admin.html"><i class="fa fa-user"></i> Admin</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button type="button" class="icon-button notification-btn" aria-label="Notifications">
+        <i class="fa-regular fa-bell"></i>
+      </button>
+
+      <div class="profile">
+        <button type="button" class="profile-toggle" aria-label="Open profile">
+          <span class="profile-avatar" id="profileAvatar">RH</span>
+          <span class="profile-copy">
+            <strong id="profileName">Rescue User</strong>
+            <span id="profileRole">Delhi Response Zone</span>
+          </span>
+          <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+      <div class="profile-menu" id="profileMenu">
+        <div class="profile-meta">
+          <strong id="profileMenuName">Rescue User</strong>
+          <p id="profileMenuRole">Zone: Delhi Response Zone</p>
+          <p id="profileMenuEmail">Contact: user@rescuehub.com</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Current Zone</span>
+            <strong id="profileZone">Delhi Response Zone</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Emergency Contact</span>
+            <strong id="profileEmergencyContact">Add a saved contact</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Medical Notes</span>
+            <strong id="profileMedical">No medical needs added</strong>
+          </div>
+          <div class="profile-detail-card">
+            <span class="profile-detail-label">Nearest Shelter</span>
+            <strong id="profileShelter">City Community Center</strong>
+          </div>
+        </div>
+        <div class="profile-links">
+          <a href="sos.html" class="chip">Open SOS</a>
+          <a href="shelters.html" class="chip">Find Shelter</a>
+        </div>
+        <button id="logoutButton" type="button" class="btn btn-secondary">Logout</button>
+      </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-page">
+    <div class="dashboard-grid">
+      <section class="mission-panel">
+        <div class="mission-copy">
+          <p class="section-kicker">Live Coordination Center</p>
+          <h1>Emergency <span>Dashboard</span></h1>
+          <p class="subtitle" id="dashboardSubtitle">
+            Real-time disaster monitoring and emergency response at your fingertips.
+          </p>
+
+          <div class="mission-tags">
+            <span><i class="fa-solid fa-tower-broadcast"></i> Response Network Active</span>
+            <span><i class="fa-solid fa-location-crosshairs"></i> Location Tracking Ready</span>
+            <span><i class="fa-solid fa-user-shield"></i> Field Team Access Secured</span>
+          </div>
+        </div>
+
+        <div class="mission-side">
+          <div class="status-card priority">
+            <p class="status-label">Priority Status</p>
+            <h3 id="priorityLabel">Monitoring Active Events</h3>
+            <p id="priorityText">Watching incoming emergency reports and active alerts.</p>
+          </div>
+
+          <div class="metrics-row">
+            <div class="status-card">
+              <p class="status-label">Active Alerts</p>
+              <h3 id="metricAlerts">00</h3>
+              <p>Current alerts visible in the live response feed.</p>
+            </div>
+
+            <div class="status-card">
+              <p class="status-label">Available Shelters</p>
+              <h3 id="metricShelters">00</h3>
+              <p>Safe locations available for routing and medical support.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="action-cards">
+        <div class="card sos" data-href="sos.html" tabindex="0">
+          <i class="fa fa-triangle-exclamation"></i>
+          <h3>SOS Emergency</h3>
+          <p>Send an urgent distress signal with your live location to response teams.</p>
+        </div>
+
+        <div class="card" data-href="report.html" tabindex="0">
+          <i class="fa fa-file-lines"></i>
+          <h3>Report Disaster</h3>
+          <p>Log new incidents, damage details, and updates from the affected area.</p>
+        </div>
+
+        <div class="card" data-href="shelters.html" tabindex="0">
+          <i class="fa fa-location-dot"></i>
+          <h3>Find Shelters</h3>
+          <p>Locate nearby shelters, relief points, and emergency medical facilities.</p>
+        </div>
+
+        <div class="card" data-href="safety.html" tabindex="0">
+          <i class="fa fa-book"></i>
+          <h3>Safety Guide</h3>
+          <p>Review evacuation advice and quick-response steps for active threats.</p>
+        </div>
+      </section>
+
+      <section class="ops-grid">
+        <div class="ops-card panel">
+          <div class="ops-head">
+            <h2><i class="fa-solid fa-radio"></i> Coordination Notes</h2>
+            <span class="mini-pill subtle">Live Backend Feed</span>
+          </div>
+          <div id="dashboardNotesState" class="loading-state state-box">
+            <div class="spinner"></div>
+            <p>Loading live coordination notes...</p>
+          </div>
+          <div id="dashboardNotes" class="note-stream" hidden></div>
+        </div>
+
+        <div class="ops-card panel">
+          <div class="ops-head">
+            <h2><i class="fa-solid fa-clipboard-check"></i> Recent Activity</h2>
+            <span class="mini-pill">Auto Updated</span>
+          </div>
+          <div id="activityState" class="loading-state state-box">
+            <div class="spinner"></div>
+            <p>Loading activity timeline...</p>
+          </div>
+          <div id="activityTimeline" class="timeline-list" hidden></div>
+        </div>
+      </section>
+
+      <section class="dashboard-bottom">
+        <section class="alert-panel panel">
+          <div class="section-head">
+            <div>
+              <h2>Latest Alerts</h2>
+              <p>Most recent incidents from the live simulation feed.</p>
+            </div>
+            <a href="alerts.html" class="chip">View All Alerts</a>
+          </div>
+          <div id="dashboardAlertsState" class="loading-state state-box">
+            <div class="spinner"></div>
+            <p>Loading latest alerts...</p>
+          </div>
+          <div id="dashboardAlerts" class="alert-list" hidden></div>
+        </section>
+
+        <section class="timeline-card panel">
+          <div class="section-head">
+            <div>
+              <h2>Response Snapshot</h2>
+              <p>Quick overview of the current rescue network status.</p>
+            </div>
+          </div>
+          <div class="metric-stack">
+            <div class="timeline-item">
+              <span class="timeline-time">Coverage</span>
+              <p id="snapshotCoverage">Response teams are covering high-risk zones with simulated live dispatch updates.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">Escalation</span>
+              <p id="snapshotEscalation">New incident reports will immediately appear in alerts and activity feeds.</p>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-time">Safety Network</span>
+              <p id="snapshotSafety">Shelters, hospitals, and SOS routing remain synced across the platform.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

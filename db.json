@@ -1,0 +1,313 @@
+{
+  "users": [
+    {
+      "id": "user-admin",
+      "name": "Admin User",
+      "email": "admin@rescuehub.com",
+      "passwordHash": "e86f78a8a3caf0b60d8e74e5942aa6d86dc150cd3c03338aef25b7d2d7e3acc7",
+      "role": "admin",
+      "profile": {
+        "phone": "+91 99999 00000",
+        "zone": "delhi",
+        "medical": "Control room access only",
+        "language": "English"
+      }
+    },
+    {
+      "id": "user-1773588315511",
+      "name": "krishna",
+      "email": "krishna@gmail.com",
+      "passwordHash": "b06514d8bc65875cc670a226aa945c492c126ef2da71f226c3ed938aacb27f30",
+      "role": "user",
+      "profile": {
+        "zone": "delhi",
+        "phone": "",
+        "medical": "No medical needs added",
+        "language": "English"
+      }
+    },
+    {
+      "id": "user-1773732281520",
+      "name": "john",
+      "email": "john@gmail.com",
+      "passwordHash": "370420e335f7a4d2ead6879991641792d5bdcde2db5d4fae3d976c2133732cda",
+      "role": "user",
+      "profile": {
+        "zone": "delhi",
+        "phone": "",
+        "medical": "No medical needs added",
+        "language": "English"
+      }
+    },
+    {
+      "id": "user-1773732330828",
+      "name": "jd",
+      "email": "jd@gmal.com",
+      "passwordHash": "deefd458afbfe17384b3c25d917a26b7c8d3ec32faf45a5dc8fc84e5dc9b850a",
+      "role": "user",
+      "profile": {
+        "zone": "delhi",
+        "phone": "",
+        "medical": "No medical needs added",
+        "language": "English"
+      }
+    },
+    {
+      "id": "user-1775104536099",
+      "name": "ram",
+      "email": "ram@gmail.com",
+      "passwordHash": "cd96142b14d184a90d1131d71b70e236e6f3a81d5c5dea28a4be8c22e1b946c5",
+      "role": "user",
+      "profile": {
+        "zone": "delhi",
+        "phone": "",
+        "medical": "No medical needs added",
+        "language": "English"
+      }
+    }
+  ],
+  "sessions": [
+    {
+      "token": "4450de842e494f69e0f6864aa03b80dc99554ba9c46ed421",
+      "userId": "user-admin",
+      "createdAt": 1773588107563
+    },
+    {
+      "token": "d03a26a5511e7e8002dc3f513664bcabf574dec058c7f5b8",
+      "userId": "user-admin",
+      "createdAt": 1773588159614
+    },
+    {
+      "token": "43da4b84695bad770f8c839936aae82f580a05905db55903",
+      "userId": "user-1775104536099",
+      "createdAt": 1775104536200
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert-1",
+      "type": "Flood",
+      "severity": "critical",
+      "location": "Chennai, Tamil Nadu",
+      "description": "Move to higher ground immediately and avoid flood waters.",
+      "createdAt": "2026-03-14T09:10:00"
+    },
+    {
+      "id": "alert-2",
+      "type": "Earthquake",
+      "severity": "high",
+      "location": "Kathmandu Region, Nepal",
+      "description": "Drop, cover, and hold on. Move to open areas after shaking stops.",
+      "createdAt": "2026-03-14T08:35:00"
+    },
+    {
+      "id": "alert-3",
+      "type": "Cyclone",
+      "severity": "high",
+      "location": "Odisha Coast, India",
+      "description": "Stay indoors, secure loose objects, and stock essentials.",
+      "createdAt": "2026-03-14T07:40:00"
+    },
+    {
+      "id": "alert-4",
+      "type": "Fire",
+      "severity": "medium",
+      "location": "California, USA",
+      "description": "Evacuate if ordered and stay low to avoid smoke inhalation.",
+      "createdAt": "2026-03-14T06:15:00"
+    },
+    {
+      "id": "alert-5",
+      "type": "Flood",
+      "severity": "low",
+      "location": "Mumbai, Maharashtra",
+      "description": "Monitor weather alerts and avoid low-lying roads.",
+      "createdAt": "2026-03-13T18:20:00"
+    }
+  ],
+  "shelters": [
+    {
+      "id": "delhi-community-center",
+      "zone": "delhi",
+      "name": "City Community Center",
+      "type": "shelter",
+      "area": "Central Civic District",
+      "coords": [
+        28.6139,
+        77.209
+      ],
+      "support": "Food, water, rest space, and family shelter support.",
+      "status": "Available now"
+    },
+    {
+      "id": "delhi-government-hospital",
+      "zone": "delhi",
+      "name": "Government Hospital",
+      "type": "hospital",
+      "area": "North Medical Corridor",
+      "coords": [
+        28.6229,
+        77.219
+      ],
+      "support": "Trauma intake, emergency beds, and ambulance access.",
+      "status": "High readiness"
+    },
+    {
+      "id": "delhi-red-cross",
+      "zone": "delhi",
+      "name": "Red Cross Relief Camp",
+      "type": "shelter",
+      "area": "West Relief Sector",
+      "coords": [
+        28.6049,
+        77.199
+      ],
+      "support": "Supply pickup, volunteer desk, and temporary rest space.",
+      "status": "Supply distribution active"
+    },
+    {
+      "id": "delhi-district-medical",
+      "zone": "delhi",
+      "name": "District Medical Center",
+      "type": "hospital",
+      "area": "East Triage Zone",
+      "coords": [
+        28.61,
+        77.21
+      ],
+      "support": "Critical care, triage, and ambulance coordination.",
+      "status": "Critical care open"
+    },
+    {
+      "id": "delhi-relief-shelter",
+      "zone": "delhi",
+      "name": "Emergency Relief Shelter",
+      "type": "shelter",
+      "area": "Northeast Family Zone",
+      "coords": [
+        28.62,
+        77.215
+      ],
+      "support": "Family space, charging points, and overnight shelter.",
+      "status": "Accepting arrivals"
+    },
+    {
+      "id": "mumbai-coastal-shelter",
+      "zone": "mumbai",
+      "name": "Coastal Relief Shelter",
+      "type": "shelter",
+      "area": "Marine Drive Safe Belt",
+      "coords": [
+        19.0748,
+        72.8774
+      ],
+      "support": "Temporary shelter, food kits, and family rest zone.",
+      "status": "Storm intake active"
+    },
+    {
+      "id": "mumbai-emergency-hospital",
+      "zone": "mumbai",
+      "name": "Harbor Emergency Hospital",
+      "type": "hospital",
+      "area": "South Harbor Medical Zone",
+      "coords": [
+        19.0682,
+        72.8808
+      ],
+      "support": "Emergency beds, ambulance intake, and trauma support.",
+      "status": "High readiness"
+    },
+    {
+      "id": "chennai-flood-shelter",
+      "zone": "chennai",
+      "name": "Riverbank Shelter Hub",
+      "type": "shelter",
+      "area": "North Flood Evacuation Zone",
+      "coords": [
+        13.0878,
+        80.2785
+      ],
+      "support": "Dry shelter, food supply, and child-safe area.",
+      "status": "Evacuation support active"
+    },
+    {
+      "id": "chennai-medical-center",
+      "zone": "chennai",
+      "name": "Chennai Medical Relief Center",
+      "type": "hospital",
+      "area": "Central Medical Corridor",
+      "coords": [
+        13.0814,
+        80.2718
+      ],
+      "support": "Flood response triage and urgent medical care.",
+      "status": "Critical care open"
+    },
+    {
+      "id": "bengaluru-support-shelter",
+      "zone": "bengaluru",
+      "name": "Bengaluru Support Shelter",
+      "type": "shelter",
+      "area": "City Support Sector",
+      "coords": [
+        12.9734,
+        77.5945
+      ],
+      "support": "Family shelter, food counter, and charging stations.",
+      "status": "Available now"
+    },
+    {
+      "id": "bengaluru-response-hospital",
+      "zone": "bengaluru",
+      "name": "Bengaluru Response Hospital",
+      "type": "hospital",
+      "area": "South Response Zone",
+      "coords": [
+        12.9685,
+        77.5995
+      ],
+      "support": "Emergency care, triage, and ambulance routing.",
+      "status": "Ready for intake"
+    }
+  ],
+  "activities": [
+    {
+      "id": "activity-1",
+      "title": "Flood response units redirected",
+      "text": "Field teams were moved toward low-lying evacuation zones after rising water reports.",
+      "createdAt": "2026-03-14T09:05:00"
+    },
+    {
+      "id": "activity-2",
+      "title": "Hospital capacity confirmed",
+      "text": "Medical support teams verified bed availability at two nearby hospitals.",
+      "createdAt": "2026-03-14T08:40:00"
+    },
+    {
+      "id": "activity-3",
+      "title": "Shelter network synced",
+      "text": "Shelter availability and routing data were updated across all response zones.",
+      "createdAt": "2026-03-14T07:55:00"
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-1",
+      "text": "Weather watch remains active with risk of rising water levels in coastal sectors.",
+      "createdAt": "2026-03-14T09:20:00"
+    },
+    {
+      "id": "note-2",
+      "text": "Medical support teams confirmed bed availability at two nearby hospitals.",
+      "createdAt": "2026-03-14T08:52:00"
+    },
+    {
+      "id": "note-3",
+      "text": "Relief supplies have been redirected to the west support corridor.",
+      "createdAt": "2026-03-14T08:10:00"
+    }
+  ],
+  "reports": [],
+  "sosRequests": [],
+  "emergencyContacts": {}
+}
